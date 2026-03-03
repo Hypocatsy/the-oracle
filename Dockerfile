@@ -15,7 +15,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Install Python dependencies
 COPY pyproject.toml uv.lock* ./
-RUN uv sync --frozen --no-dev --no-install-project
+RUN uv sync --no-dev --no-install-project
 
 # Copy backend code
 COPY backend/ ./backend/
@@ -26,6 +26,9 @@ COPY --from=frontend-build /app/frontend/dist ./frontend/dist
 # Create data directory (Railway volume will mount over this)
 RUN mkdir -p /app/data/chroma /app/data/uploads
 
+# Put the venv on PATH so we don't need `uv run`
+ENV PATH="/app/.venv/bin:$PATH"
+
 EXPOSE 8050
 
-CMD uv run uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8050}
+CMD uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-8050}
