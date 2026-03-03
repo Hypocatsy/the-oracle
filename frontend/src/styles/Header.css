@@ -1,0 +1,19 @@
+.header {
+  text-align: center;
+  padding: 20px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-logo {
+  width: 340px;
+  max-width: 90vw;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .header-logo {
+    width: 240px;
+  }
+}

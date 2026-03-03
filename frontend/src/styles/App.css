@@ -1,0 +1,42 @@
+.app {
+  min-height: 100vh;
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.main-layout {
+  display: flex;
+  gap: 20px;
+}
+
+/* Crescent moon cat — top-left background decoration */
+.bg-crescent-cat {
+  position: fixed;
+  top: 10px;
+  left: 15px;
+  width: 90px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+  will-change: transform;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .main-layout {
+    flex-direction: column;
+  }
+
+  .bg-crescent-cat {
+    display: none;
+  }
+}

@@ -1,0 +1,111 @@
+/* ===== SavedTab ===== */
+.saved-tab {
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.saved-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.saved-item:hover {
+  background-color: var(--pink-light);
+}
+
+.saved-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.saved-question {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.saved-book-tag {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.saved-remove-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.saved-item:hover .saved-remove-btn {
+  opacity: 1;
+}
+
+.saved-remove-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+  color: var(--text-dark);
+}
+
+/* ===== Clear all ===== */
+.saved-clear-btn {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--pink-light);
+  transition: color 0.15s;
+}
+
+.saved-clear-btn:hover {
+  color: var(--text-dark);
+}
+
+/* ===== Empty state ===== */
+.saved-empty {
+  padding: 24px 12px;
+  text-align: center;
+}
+
+.saved-empty p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}

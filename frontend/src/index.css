@@ -1,0 +1,57 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&family=Quicksand:wght@400;500;600;700&display=swap');
+
+/* ===== Design Tokens ===== */
+:root {
+  --pink-light: #F8E8EE;
+  --pink-medium: #F2B8C6;
+  --lavender: #D8C8E8;
+  --cream: #FFF8E7;
+  --blue-light: #D0E8F0;
+  --gold: #C8A96E;
+  --gold-light: #E8D5A8;
+  --mint: #D8F0D8;
+  --text-dark: #4A3F35;
+  --text-muted: #8A7F75;
+  --bg: #FDF0F5;
+  --white: #FFFFFF;
+  --green: #6BAF6B;
+  --red: #D4766E;
+  --shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+  --radius-full: 9999px;
+  --font-title: 'Rubik Bubbles', cursive;
+  --font-serif: 'Quicksand', sans-serif;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ===== Reusable Card ===== */
+.card {
+  background: var(--white);
+  border: 1px solid var(--pink-light);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}

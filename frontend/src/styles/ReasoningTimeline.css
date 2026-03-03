@@ -1,0 +1,162 @@
+/* ===== Reasoning Timeline ===== */
+.rt-container {
+  width: 100%;
+}
+
+/* Toggle button */
+.rt-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 0;
+  margin-bottom: 6px;
+}
+
+.rt-toggle:disabled {
+  cursor: default;
+}
+
+.rt-chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.rt-chevron-collapsed {
+  transform: rotate(-90deg);
+}
+
+/* Spinner dot */
+.rt-spinner {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: rt-pulse 1s ease-in-out infinite;
+  margin-left: 4px;
+}
+
+@keyframes rt-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Steps container */
+.rt-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 2px solid var(--gold-light);
+  padding-left: 12px;
+  margin-left: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.rt-steps::-webkit-scrollbar {
+  width: 3px;
+}
+
+.rt-steps::-webkit-scrollbar-thumb {
+  background: var(--gold-light);
+  border-radius: 3px;
+}
+
+/* Individual step */
+.rt-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  padding: 2px 0;
+}
+
+.rt-icon {
+  flex-shrink: 0;
+  width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+
+.rt-text {
+  flex: 1;
+  min-width: 0;
+  word-break: break-word;
+}
+
+/* Thought step */
+.rt-thought .rt-text {
+  color: var(--text-dark);
+}
+
+/* Tool call step */
+.rt-tool-call .rt-text {
+  color: var(--text-dark);
+  font-weight: 500;
+}
+
+/* Tool result step */
+.rt-tool-result .rt-text {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.rt-tool-result .rt-icon {
+  color: #7a9e6a;
+  font-size: 11px;
+}
+
+/* ===== Loading layout (side-by-side in AnswerCard) ===== */
+.loading-with-reasoning {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 40px 0;
+}
+
+.loading-with-reasoning .tarot-side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-with-reasoning .reasoning-side {
+  flex: 1;
+  min-width: 0;
+  padding-top: 8px;
+}
+
+/* ===== Collapsed reasoning in answer view ===== */
+.answer-reasoning {
+  margin-bottom: 16px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .loading-with-reasoning {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 30px 0;
+  }
+
+  .loading-with-reasoning .reasoning-side {
+    width: 100%;
+  }
+
+  .rt-steps {
+    max-height: 150px;
+  }
+}
