@@ -1,9 +1,10 @@
 import os
 from pathlib import Path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from config import UPLOAD_DIR, CHROMA_PERSIST_DIR
 from routers import books, query
@@ -32,11 +33,12 @@ def health():
 # Serve the built React frontend in production
 FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend" / "dist"
 if FRONTEND_DIR.is_dir():
+    # Mount static assets (JS, CSS, images)
     app.mount("/assets", StaticFiles(directory=FRONTEND_DIR / "assets"), name="assets")
 
-    @app.get("/{path:path}")
-    async def serve_spa(path: str):
-        file_path = FRONTEND_DIR / path
-        if file_path.is_file():
-            return FileResponse(file_path)
-        return FileResponse(FRONTEND_DIR / "index.html")
+    # Catch 404s on non-API routes and serve the SPA index.html
+    @app.exception_handler(StarletteHTTPException)
+    async def spa_fallback(request: Request, exc: StarletteHTTPException):
+        if exc.status_code == 404 and not request.url.path.startswith("/api/"):
+            return FileResponse(FRONTEND_DIR / "index.html")
+        return JSONResponse({"detail": exc.detail}, status_code=exc.status_code)
