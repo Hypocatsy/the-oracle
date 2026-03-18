@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search } from 'lucide-react'
+import { Search, BookOpen } from 'lucide-react'
 import catPawWand from '../assets/cats/catpawwand.PNG'
 import '../styles/SearchBar.css'
 
@@ -45,16 +45,19 @@ export default function SearchBar({ onSearch, loading, books = [], allTopics = [
       <form className="search-form" onSubmit={handleSubmit}>
         <div className="search-input-wrapper">
           <Search className="search-icon" size={16} />
-          <select
-            className="book-filter-select"
-            value={selectedBookId}
-            onChange={(e) => setSelectedBookId(e.target.value)}
-          >
-            <option value="">All Books</option>
-            {filteredBooks.map((book) => (
-              <option key={book.id} value={book.id}>{book.title}</option>
-            ))}
-          </select>
+          <div className="book-filter-wrapper">
+            <BookOpen className="book-filter-icon" size={14} />
+            <select
+              className="book-filter-select"
+              value={selectedBookId}
+              onChange={(e) => setSelectedBookId(e.target.value)}
+            >
+              <option value="">All Books</option>
+              {filteredBooks.map((book) => (
+                <option key={book.id} value={book.id}>{book.title}</option>
+              ))}
+            </select>
+          </div>
           <input
             className="search-input"
             type="text"

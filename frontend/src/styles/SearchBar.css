@@ -55,11 +55,24 @@
   pointer-events: none;
 }
 
-.book-filter-select {
+.book-filter-wrapper {
   position: absolute;
   left: 36px;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--pink-medium);
+  padding-right: 4px;
+}
+
+.book-filter-icon {
+  display: none;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.book-filter-select {
   border: none;
   background: transparent;
   font-family: var(--font-body);
@@ -68,7 +81,6 @@
   cursor: pointer;
   outline: none;
   padding: 2px 4px;
-  border-right: 1px solid var(--pink-medium);
   border-radius: 0;
   max-width: 140px;
   text-overflow: ellipsis;
@@ -140,5 +152,27 @@
     width: 30px;
     top: -14px;
     right: -8px;
+  }
+
+  /* Collapse book filter to icon on mobile */
+  .book-filter-icon {
+    display: block;
+  }
+
+  .book-filter-select {
+    width: 20px;
+    color: transparent;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  /* Options still need to be readable in the native dropdown */
+  .book-filter-select option {
+    color: var(--text-dark);
+  }
+
+  .search-input {
+    padding-left: 80px;
   }
 }
